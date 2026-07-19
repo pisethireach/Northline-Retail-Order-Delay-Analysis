@@ -6,8 +6,8 @@ Northline Retail is a fictional e-commerce retailer used for this project. The d
 
 Northline's current fulfilment process has no step that checks whether an order is likely to be late before it ships. Orders move through allocation, picking, and dispatch the same way regardless of weight, discount, or warehouse, and risk is only visible once a delivery has already failed to arrive on time.
 
-Full write-up: [`business-case.md`](business-case.md)
-User stories: [`user-stories.md`](user-stories.md)
+Full write-up: [`business-case.md`](01-business-case/business-case.md)
+User stories: [`user-stories.md`](01-business-case/user-stories.md)
 
 ## Process Models
 
