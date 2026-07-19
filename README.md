@@ -13,16 +13,16 @@ User stories: [`user-stories.md`](01-business-case/user-stories.md)
 
 The as-is diagram maps Northline's current order fulfilment process, including approval, fulfilment exception handling, and escalation. The to-be diagram adds one automated risk-flagging step after warehouse allocation, using the factors confirmed by the SQL analysis below, and narrows supervisor approval to orders that actually meet risk criteria instead of applying it to every order.
 
-![As-Is Process](as-is-bpmn.png)
-![To-Be Process](to-be-bpmn.png)
+![As-Is Process](02-process-models/as-is-bpmn.png)
+![To-Be Process](02-process-models/to-be-bpmn.png)
 
-A simplified, happy-path version of the as-is process is included separately for a quicker overview: [`as-is-happy-path.png`](as-is-happy-path.png)
+A simplified, happy-path version of the as-is process is included separately for a quicker overview: [`as-is-happy-path.png`](02-process-models/as-is-happy-path.png)
 
 ## Data Model
 
 The data model consists of four tables: Orders, Customers, Warehouse, and ShipmentMode. Orders serves as the central table, with the remaining three referenced by foreign key. CustomerID is a constructed identifier rather than a field present in the source dataset, since no customer-level identifier exists in the raw data, each order is treated as a distinct customer for modelling purposes.
 
-![ERD](erd.png)
+![ERD](03-data-model/erd.png)
 
 ## SQL Analysis
 
@@ -35,19 +35,19 @@ This project includes six SQL questions, each tied to a specific claim made in t
 5. Does a discount-based rule reliably predict late orders?
 6. Does that rule hold consistently across every warehouse?
 
-Full queries: [`queries.sql`](queries.sql)
+Full queries: [`queries.sql`](04-sql/queries.sql)
 
 ## Dashboard
 
 The dashboard contains five visuals, each built directly from the SQL results above: overall late rate, late rate by warehouse block, late rate by discount offered, risk-flag reliability by order volume, and a weight comparison between late and on-time orders.
 
-![Dashboard](northline-retail-dashboard.png)
+![Dashboard](05-dashboard/northline-retail-dashboard.png)
 
 ## Key Findings
 
 Northline's overall late delivery rate is 59.67% across 10,999 orders. Warehouse block and shipment mode showed no meaningful effect on delay, with late rates staying within a 57 to 62 percent band across every combination tested. Every order with a discount above 10% was late, with no exceptions, while orders at 10% or below had a late rate close to the overall average. This discount rule is reliable but limited: it applies to only 24% of orders, so it accounts for around 40% of total late orders, leaving the remaining 60% unexplained by discount, weight, warehouse, or shipment mode. Late orders were also lighter on average than on-time orders, the opposite of the original hypothesis.
 
-Full write-up, including limitations and next steps: [`findings-summary.md`](findings-summary.md)
+Full write-up, including limitations and next steps: [`findings-summary.md`](06-findings/findings-summary.md)
 
 ## Notes on Scope
 
