@@ -13,10 +13,10 @@ User stories: [`user-stories.md`](01-business-case/user-stories.md)
 
 The as-is diagram maps Northline's current order fulfilment process, including approval, fulfilment exception handling, and escalation. The to-be diagram adds one automated risk-flagging step after warehouse allocation, using the factors confirmed by the SQL analysis below, and narrows supervisor approval to orders that actually meet risk criteria instead of applying it to every order.
 
-AS-IS BPMN:
+1. AS-IS BPMN:
 ![As-Is Process](02-process-models/as-is-bpmn.png)
 
-TO-BE BPMN:
+2. TO-BE BPMN:
 ![To-Be Process](02-process-models/to-be-bpmn.png)
 
 A simplified, happy-path version of the as-is process is included separately for a quicker overview: [`as-is-happy-path.png`](02-process-models/as-is-happy-path.png)
